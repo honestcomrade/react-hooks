@@ -5,10 +5,8 @@ import ShopContext from './context/shop-context';
 import ProductsPage from './pages/Products';
 import CartPage from './pages/Cart';
 import './App.css';
-import { runInThisContext } from 'vm';
 
 class App extends Component {
-
   state = {
     products: [
       { id: 'p1', title: 'Gaming Mouse', price: 29.99 },
@@ -21,11 +19,39 @@ class App extends Component {
   };
 
   addProductToCart = product => {
-    console.log("adding product", product)
+    console.log("adding product", product);
+    const updatedCart = [...this.state.cart];
+    const updatedItemIndex = updatedCart.findIndex(
+      item => item.id === product.id
+    );
+    if (updatedItemIndex < 0) {
+      updatedCart.push({ ...product, quantity: 1 });
+    } else {
+      const updatedItem = {
+        ...updatedCart[updatedItemIndex]
+      };
+      updatedItem.quantity++;
+      updatedCart[updatedItemIndex] = updatedItem;
+    }
+    this.setState({cart: updatedCart});
   }; 
 
   removeProductFromCart = productId => {
     console.log("removing product", productId)
+    const updatedCart = [...this.state.cart];
+    const updatedItemIndex = updatedCart.findIndex(
+      item => item.id === productId
+    );
+    const updatedItem = {
+      ...updatedCart[updatedItemIndex]
+    };
+    updatedItem.quantity--;
+    if (updatedItem.quantity <= 0) {
+      updatedCart.splice(updatedItemIndex, 1 );
+    } else {
+      updatedCart[updatedItemIndex] = updatedItem;
+    }
+    this.setState({cart: updatedCart});
   };
 
   render() {
