@@ -8,5 +8,7 @@ export default React.createContext({
         { id: 'p4', title: 'Half-dried plant', price: 2.99 }
       ],
       cart: [],
-      cartSum: 0
+      cartSum: 0,
+      addProductToCart: product => {},
+      removeProductFromCart: productId => {}
 });
