@@ -15,7 +15,7 @@ const addProductToCart = (product, cart) => {
     updatedItem.quantity++;
     updatedCart[updatedItemIndex] = updatedItem;
   }
-  console.log("cart after aciton ADD", updatedCart);
+  console.log("cart after action ADD", updatedCart);
   return { cart: updatedCart };
 }; 
 
@@ -33,7 +33,7 @@ const removeProductFromCart = (productId, cart) => {
   } else {
     updatedCart[updatedItemIndex] = updatedItem;
   }
-  console.log("cart after aciton REMOVE", updatedCart);
+  console.log("cart after action REMOVE", updatedCart);
   return { cart: updatedCart };
 
 };

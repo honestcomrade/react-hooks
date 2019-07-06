@@ -6,7 +6,7 @@ import { ADD_PRODUCT, REMOVE_PRODUCT, shopReducer } from '../reducers/reducers';
 
 export default function GlobalState (props) {
   
-  const [ cartState, dispatchCartAction ] = useReducer(shopReducer, {cart: []})
+  const [ cartState, dispatchCartAction ] = useReducer(shopReducer, {cart: []}) // set a default value for the cart in the reducer
   
   const products = [
     { id: 'p1', title: 'Gaming Mouse', price: 29.99 },
