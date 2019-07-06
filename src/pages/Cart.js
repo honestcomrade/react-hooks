@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import MainNavigation from '../components/MainNavigation';
 import ShopContext from '../context/shop-context';
@@ -6,7 +6,15 @@ import ShopContext from '../context/shop-context';
 import './Cart.css';
 
 export default function CartPage () {
-  
+  const context = useContext(ShopContext);
+
+  // make this function only run one time when the app is done rendering
+  // replace empty array with dependencies that we want
+  // to force us to re render
+  useEffect(() => {
+    console.log("context: ",context);
+  }, []);
+
   return (
     <ShopContext.Consumer>
       {context => (
